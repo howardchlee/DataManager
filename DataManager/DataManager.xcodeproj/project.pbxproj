@@ -13,6 +13,9 @@
 		6F6960AD1EB9A87100636F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6960AC1EB9A87100636F40 /* Assets.xcassets */; };
 		6F6960B01EB9A87100636F40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6960AE1EB9A87100636F40 /* LaunchScreen.storyboard */; };
 		6F6960BB1EB9A87100636F40 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6960BA1EB9A87100636F40 /* DataManagerTests.swift */; };
+		6F6960C71EB9A8B700636F40 /* DMDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6960C61EB9A8B700636F40 /* DMDataManager.swift */; };
+		6F6960C91EB9A8FF00636F40 /* DMDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6960C81EB9A8FF00636F40 /* DMDataObject.swift */; };
+		6F6960CB1EB9A91800636F40 /* DMDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6960CA1EB9A91800636F40 /* DMDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		6F6960B61EB9A87100636F40 /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6960BA1EB9A87100636F40 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		6F6960BC1EB9A87100636F40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F6960C61EB9A8B700636F40 /* DMDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDataManager.swift; sourceTree = "<group>"; };
+		6F6960C81EB9A8FF00636F40 /* DMDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDataObject.swift; sourceTree = "<group>"; };
+		6F6960CA1EB9A91800636F40 /* DMDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		6F6960A41EB9A87100636F40 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				6F6960C51EB9A88A00636F40 /* DataManager */,
 				6F6960A51EB9A87100636F40 /* AppDelegate.swift */,
 				6F6960A71EB9A87100636F40 /* ViewController.swift */,
 				6F6960A91EB9A87100636F40 /* Main.storyboard */,
@@ -94,6 +101,16 @@
 				6F6960BC1EB9A87100636F40 /* Info.plist */,
 			);
 			path = DataManagerTests;
+			sourceTree = "<group>";
+		};
+		6F6960C51EB9A88A00636F40 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				6F6960C61EB9A8B700636F40 /* DMDataManager.swift */,
+				6F6960C81EB9A8FF00636F40 /* DMDataObject.swift */,
+				6F6960CA1EB9A91800636F40 /* DMDataFetcher.swift */,
+			);
+			name = DataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +220,9 @@
 			files = (
 				6F6960A81EB9A87100636F40 /* ViewController.swift in Sources */,
 				6F6960A61EB9A87100636F40 /* AppDelegate.swift in Sources */,
+				6F6960C71EB9A8B700636F40 /* DMDataManager.swift in Sources */,
+				6F6960C91EB9A8FF00636F40 /* DMDataObject.swift in Sources */,
+				6F6960CB1EB9A91800636F40 /* DMDataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
