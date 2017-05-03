@@ -8,12 +8,23 @@
 
 import UIKit
 
+// The load state of a DMDataObject.  The fetcher should update this state based on loading status
 enum DMDataObjectLoadState {
+
+    // The object is initialized but not loaded at all
     case initialized
+    
+    // Loading has begun for the object
     case loading
+
+    // Object is completely loaded and usable
     case loaded
-    case expired
+
+    // when a request failed and is not actively being loaded
     case invalid
+
+    // when a request has failed before and is actively being loaded
+    case retrying
 }
 
 class DMDataObject: NSObject {

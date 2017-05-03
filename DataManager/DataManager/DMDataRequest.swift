@@ -9,7 +9,5 @@
 import Foundation
 
 protocol DMDataRequest {
-
     var requestIdentifier: String { get }
-    var dataClassIdentifier: String { get }
 }

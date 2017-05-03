@@ -24,13 +24,12 @@ class DMDataManager: NSObject {
         dataFetcherByIdentifier[dataClassIdentifier] = dataFetcher
     }
 
-    func dataObjectWithRequest(request: DMDataRequest) -> DMDataObject {
+    func dataObjectWithRequest(request: DMDataRequest, dataClassIdentifier: String) -> DMDataObject {
         let requestIdentifier = request.requestIdentifier
         if let dataObject: DMDataObject = dataCache.object(forKey: requestIdentifier as NSString) {
             return dataObject
         }
 
-        let dataClassIdentifier = request.dataClassIdentifier
         if let dataClass: DMDataObject.Type = dataClassByIdentifier[dataClassIdentifier] {
             let dataObject = dataClass.init()
 
