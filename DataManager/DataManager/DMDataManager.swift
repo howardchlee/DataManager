@@ -10,15 +10,41 @@ import Foundation
 
 class DMDataManager: NSObject {
     let dataCache: NSCache<NSString, DMDataObject>
-    var dataClassByIdentifier: [String: AnyClass] = [:]
-    var dataObjectByIdentifier: [String: DMDataObject] = [:]
+    var dataClassByIdentifier: [String: DMDataObject.Type] = [:]
+    var dataFetcherByIdentifier: [String: DMDataFetcher] = [:]
 
     override init() {
         dataCache = NSCache()
     }
 
-    func registerClass(dataClass: AnyClass, identifier: String) {
-        assert(dataClass.isSubclass(of: DMDataObject.self), "Data class must be a subclass of DMDataObject")
-        dataClassByIdentifier[identifier] = dataClass
+    func registerClass(dataClass: DMDataObject.Type, dataClassIdentifier: String) {
+        dataClassByIdentifier[dataClassIdentifier] = dataClass
+        let dataFetcherClass = dataClass.fetcherClass
+        let dataFetcher = dataFetcherClass.init()
+        dataFetcherByIdentifier[dataClassIdentifier] = dataFetcher
+    }
+
+    func dataObjectWithRequest(request: DMDataRequest) -> DMDataObject {
+        let requestIdentifier = request.requestIdentifier
+        if let dataObject: DMDataObject = dataCache.object(forKey: requestIdentifier as NSString) {
+            return dataObject
+        }
+
+        let dataClassIdentifier = request.dataClassIdentifier
+        if let dataClass: DMDataObject.Type = dataClassByIdentifier[dataClassIdentifier] {
+            let dataObject = dataClass.init()
+
+            if let dataFetcher = dataFetcherByIdentifier[dataClassIdentifier] {
+                dataFetcher.fetch(request: request, dataObject: dataObject)
+                dataCache.setObject(dataObject, forKey: requestIdentifier as NSString)
+                return dataObject
+            } else {
+                assertionFailure("No fetcher is set for identifier: \(dataClassIdentifier)")
+            }
+        } else {
+            assertionFailure("No class registered for identifier: \(dataClassIdentifier)")
+
+        }
+        return DMDataObject()
     }
 }

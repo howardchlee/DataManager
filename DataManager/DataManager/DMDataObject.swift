@@ -13,16 +13,18 @@ enum DMDataObjectLoadState {
     case loading
     case loaded
     case expired
+    case invalid
 }
 
 class DMDataObject: NSObject {
 
-    var loadState: DMDataObjectLoadState
-    var fetcherClass: AnyClass {
+    class var fetcherClass: DMDataFetcher.Type {
         return DMNilDataFetcher.self
     }
 
-    override init() {
+    var loadState: DMDataObjectLoadState
+
+    required override init() {
         loadState = .initialized
     }
 }

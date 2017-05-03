@@ -9,11 +9,17 @@
 import UIKit
 
 protocol DMDataFetcher {
-    func fetch(withCompletion completion:(DMDataObject?, NSError?)->())
+    init()
+    func fetch(request: DMDataRequest, dataObject: DMDataObject)
 }
 
 class DMNilDataFetcher: DMDataFetcher {
-    func fetch(withCompletion completion: (DMDataObject?, NSError?) -> ()) {
-        completion(nil, nil)
+    
+    required init() {
+        
+    }
+
+    func fetch(request: DMDataRequest, dataObject: DMDataObject) {
+        dataObject.loadState = .loaded
     }
 }
